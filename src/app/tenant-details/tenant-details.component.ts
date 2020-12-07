@@ -12,11 +12,17 @@ export class TenantDetailsComponent implements OnInit {
   title = 'Tenant Details';
   tenantData: TenantData = new class implements TenantData {
     agentURI: string;
+    agentspringboot: string;
+    aosURI: string;
+    aospassword: string;
     baseURI: string;
+    fulltns: string;
+    grafana: string;
+    kibana: string;
     tenantId: string;
     tnsname: string;
     userId: string;
-  };
+  }
 
   constructor(
     public client: TokenService,
@@ -37,7 +43,7 @@ export class TenantDetailsComponent implements OnInit {
     );
   }
 
-  BrowseAgentUI() {
-    window.open(this.tenantData.agentURI, "_blank");
+  BrowseUrl(urlToBrowse: string) {
+    window.open(urlToBrowse, "_blank");
   }
 }

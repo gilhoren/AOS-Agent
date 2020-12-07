@@ -4,43 +4,102 @@
       <div class="card bg-light my-1">
         <div class="card-header" style="font-weight: bolder">{{ title }}</div>
         <div class="card-body">
-          <ul class="text-center list-inline ">
-            <ul class="text-center list-inline ">
-              <li class="list-inline-item" style="margin: 10px">
-                <label style="color: cadetblue; font-weight: bold; width: 100px">TNS Name: </label>
+          <ul class="list-inline ">
+            <ul class="list-inline ">
+              <li class="list-inline-item list-margin">
+                <label style="color: cadetblue; font-weight: bold; width: 200px">TNS Name: </label>
               </li>
-              <li class="list-inline-item" style="margin: 10px">
-                <input type="text" style="; width: 450px; font-style: italic" class="form-control" [(ngModel)]="tenantData.tnsname" readonly>
+              <li class="list-inline-item list-margin" >
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.tnsname" readonly>
               </li>
             </ul>
-            <ul class="text-center list-inline ">
-              <li class="list-inline-item" style="margin: 10px">
-                <label style="color: cadetblue; font-weight: bold; width: 100px">Agent UI: </label>
+            <ul class="list-inline ">
+              <li class="list-inline-item list-margin">
+                <label style="color: cadetblue; font-weight: bold; width: 200px">TNS Address: </label>
               </li>
-              <li class="list-inline-item" style="margin: 10px">
-                <input type="text" style="; width: 450px; font-style: italic" class="form-control" [(ngModel)]="tenantData.agentURI" readonly>
+              <li class="list-inline-item list-margin" >
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.fulltns" readonly>
+              </li>
+            </ul>
+            <ul class="list-inline ">
+              <li class="list-inline-item list-margin">
+                <label style="color: cadetblue; font-weight: bold; width: 200px">Agent UI: </label>
+              </li>
+              <li class="list-inline-item list-margin">
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.agentURI" readonly>
               </li>
               <li class="list-inline-item">
-                <button class="btn" style="margin-bottom: 5px; background: cadetblue" (click)="BrowseAgentUI()"
+                <button class="btn btn-margin" style="margin-bottom: 5px; background: cadetblue" (click)="BrowseUrl(tenantData.agentURI)"
                         data-toggle="tooltip" data-placement="right" title="Browse Agent UI">Go
-
                 </button>
               </li>
             </ul>
-            <ul class="text-center list-inline ">
-              <li class="list-inline-item" style="margin: 10px">
-                <label style="color: cadetblue; font-weight: bold; width: 100px">AOS URI: </label>
+            <ul class="list-inline ">
+              <li class="list-inline-item list-margin">
+                <label style="color: cadetblue; font-weight: bold; width: 200px">Agent Springboot admin: </label>
               </li>
-              <li class="list-inline-item" style="margin: 10px">
-                <input type="text" style="; width: 450px; font-style: italic" class="form-control" [(ngModel)]="tenantData.baseURI" readonly>
+              <li class="list-inline-item list-margin">
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.agentspringboot" readonly>
+              </li>
+              <li class="list-inline-item">
+                <button class="btn btn-margin" style="margin-bottom: 5px; background: cadetblue" (click)="BrowseUrl(tenantData.agentspringboot)"
+                        data-toggle="tooltip" data-placement="right" title="Browse OA/Agent Springboot">Go
+                </button>
               </li>
             </ul>
-            <ul class="text-center list-inline ">
-              <li class="list-inline-item" style="margin: 10px">
-                <label style="color: cadetblue; font-weight: bold; width: 100px">AOS User: </label>
+            <ul class="list-inline ">
+              <li class="list-inline-item list-margin">
+                <label style="color: cadetblue; font-weight: bold; width: 200px">Grafana URL: </label>
               </li>
-              <li class="list-inline-item" style="margin: 10px">
-                <input type="text" style="; width: 450px; font-style: italic" class="form-control" [(ngModel)]="tenantData.userId" readonly>
+              <li class="list-inline-item list-margin">
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.grafana" readonly>
+              </li>
+              <li class="list-inline-item">
+                <button class="btn btn-margin" style="margin-bottom: 5px; background: cadetblue" (click)="BrowseUrl(tenantData.grafana)"
+                        data-toggle="tooltip" data-placement="right" title="Browse Grafana">Go
+                </button>
+              </li>
+            </ul>
+            <ul class="list-inline ">
+              <li class="list-inline-item list-margin">
+                <label style="color: cadetblue; font-weight: bold; width: 200px">AOS Login: </label>
+              </li>
+              <li class="list-inline-item list-margin">
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.aosURI" readonly>
+              </li>
+              <li class="list-inline-item">
+                <button class="btn btn-margin" style="margin-bottom: 5px; background: cadetblue" (click)="BrowseUrl(tenantData.aosURI)"
+                        data-toggle="tooltip" data-placement="right" title="Browse AOS Login">Go
+                </button>
+              </li>
+            </ul>
+            <ul class="list-inline ">
+              <li class="list-inline-item list-margin">
+                <label style="color: cadetblue; font-weight: bold; width: 200px">AOS User: </label>
+              </li>
+              <li class="list-inline-item list-margin">
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.userId" readonly>
+              </li>
+            </ul>
+            <ul class="list-inline ">
+              <li class="list-inline-item list-margin">
+                <label style="color: cadetblue; font-weight: bold; width: 200px">AOS Password: </label>
+              </li>
+              <li class="list-inline-item list-margin">
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.aospassword" readonly>
+              </li>
+            </ul>
+            <ul class="list-inline ">
+              <li class="list-inline-item list-margin">
+                <label style="color: cadetblue; font-weight: bold; width: 200px">Kibana URL: </label>
+              </li>
+              <li class="list-inline-item list-margin">
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.kibana" readonly>
+              </li>
+              <li class="list-inline-item">
+                <button class="btn btn-margin" style="margin-bottom: 5px; background: cadetblue" (click)="BrowseUrl(tenantData.kibana)"
+                        data-toggle="tooltip" data-placement="right" title="Browse Kibana">Go
+                </button>
               </li>
             </ul>
           </ul>
