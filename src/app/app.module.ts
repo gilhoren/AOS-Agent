@@ -6,10 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {TokenService} from "./tokengen-service.service";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import { TenantDetailsComponent } from './tenant-details/tenant-details.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TenantDetailsComponent
   ],
   imports: [
     BrowserModule,

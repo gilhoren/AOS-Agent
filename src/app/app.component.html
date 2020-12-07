@@ -14,7 +14,7 @@
               </select>
             </li>
             <li class="list-inline-item">
-              <a class="text-center btn btn-info" (click)="getTenantDetails()">Get Tenant Details</a>
+              <a class="text-center btn btn-light" (click)="getTenantDetails()">Show Details</a>
             </li>
           </ul>
           <ul class="text-center list-inline ">
@@ -29,7 +29,6 @@
 
 
           <!--Token Results -->
-
           <div [hidden]="!showResults" id="results">
             <ul class="text-center list-inline ">
               <li class="list-inline-item" style="margin: 10px">
@@ -68,8 +67,14 @@
           </div>
 
         </div>
+
       </div>
       <router-outlet></router-outlet>
+
+      <div [hidden]="!showDetails">
+        <app-tenant-details></app-tenant-details>
+      </div>
+
     </div>
   </div>
 </div>

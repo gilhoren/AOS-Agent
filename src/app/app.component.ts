@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {TokenService} from "./tokengen-service.service";
 import {TokenMetaData} from "./tokenMetaData";
 import { faCoffee, faClipboard } from '@fortawesome/free-solid-svg-icons';
+import {TenantData} from "./tenantData";
+import {ViewChild} from '@angular/core';
+import {TenantDetailsComponent} from "./tenant-details/tenant-details.component";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +13,7 @@ import { faCoffee, faClipboard } from '@fortawesome/free-solid-svg-icons';
 })
 export class AppComponent implements OnInit{
   showResults = false;
+  showDetails = false;
   title = 'AOS Token Generator';
   key = "";
   token = "";
@@ -18,6 +22,7 @@ export class AppComponent implements OnInit{
   hideSuccessMessageToken = true;
   hideSuccessMessageAPI = true;
   tenants: Array<any>;
+  @ViewChild(TenantDetailsComponent) details: TenantDetailsComponent;
 
   constructor(
     public client: TokenService,
@@ -34,6 +39,7 @@ export class AppComponent implements OnInit{
   }
 
   getTenantData() {
+    this.showResults = false;
     this.client.getTenantToken(this.tenantId).subscribe(
       (data: TokenMetaData) => {
         this.key = data.apiKey,
@@ -46,6 +52,19 @@ export class AppComponent implements OnInit{
   }
 
   getTenantDetails() {
+    this.details.title = this.tenantId;
+    this.showDetails = true;
+
+    this.details.getTenantDetails(this.tenantId);
+
+    // this.client.getTenantDataByName(this.tenantId).subscribe(
+    //   (data: TenantData) => {
+    //     //this.key = data.agentURI,
+    //     //this.token = data.token
+    //   },
+    //   err => console.error(err),
+    //   () => console.log('tenantData retrieved successfully!')
+    // );
 
   }
 

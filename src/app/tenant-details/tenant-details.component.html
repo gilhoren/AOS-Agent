@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card bg-light my-1">
+        <div class="card-header" style="font-weight: bolder">{{ title }}</div>
+        <div class="card-body">
+          <ul class="text-center list-inline ">
+            <ul class="text-center list-inline ">
+              <li class="list-inline-item" style="margin: 10px">
+                <label style="color: cadetblue; font-weight: bold; width: 100px">TNS Name: </label>
+              </li>
+              <li class="list-inline-item" style="margin: 10px">
+                <input type="text" style="; width: 450px; font-style: italic" class="form-control" [(ngModel)]="tenantData.tnsname" readonly>
+              </li>
+            </ul>
+            <ul class="text-center list-inline ">
+              <li class="list-inline-item" style="margin: 10px">
+                <label style="color: cadetblue; font-weight: bold; width: 100px">Agent UI: </label>
+              </li>
+              <li class="list-inline-item" style="margin: 10px">
+                <input type="text" style="; width: 450px; font-style: italic" class="form-control" [(ngModel)]="tenantData.agentURI" readonly>
+              </li>
+              <li class="list-inline-item">
+                <button class="btn" style="margin-bottom: 5px; background: cadetblue" (click)="BrowseAgentUI()"
+                        data-toggle="tooltip" data-placement="right" title="Browse Agent UI">Go
+
+                </button>
+              </li>
+            </ul>
+            <ul class="text-center list-inline ">
+              <li class="list-inline-item" style="margin: 10px">
+                <label style="color: cadetblue; font-weight: bold; width: 100px">AOS URI: </label>
+              </li>
+              <li class="list-inline-item" style="margin: 10px">
+                <input type="text" style="; width: 450px; font-style: italic" class="form-control" [(ngModel)]="tenantData.baseURI" readonly>
+              </li>
+            </ul>
+            <ul class="text-center list-inline ">
+              <li class="list-inline-item" style="margin: 10px">
+                <label style="color: cadetblue; font-weight: bold; width: 100px">AOS User: </label>
+              </li>
+              <li class="list-inline-item" style="margin: 10px">
+                <input type="text" style="; width: 450px; font-style: italic" class="form-control" [(ngModel)]="tenantData.userId" readonly>
+              </li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
