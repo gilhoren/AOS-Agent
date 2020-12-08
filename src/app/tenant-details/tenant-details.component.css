@@ -1,5 +1,11 @@
 .btn-margin {
   margin-left: 5px;
+  padding: 5px;
+ }
+
+.img-container {
+  height: 24px;
+  width: 25px;
 }
 
 .list-margin {

@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <div class="card bg-dark my-5">
+      <div class="card bg-dark my-4">
         <div class="card-body">
-          <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
+          <h3 class="card-title text-center text-white py-3">{{ title }}</h3>
           <ul class="text-center list-inline ">
             <li class="list-inline-item" >
                 <label style="color: whitesmoke">Tenant: </label>
@@ -21,20 +21,15 @@
             <li class="list-inline-item">
               <a class="text-center btn btn-info" (click)="getTenantData()">Generate Token</a>
             </li>
-
           </ul>
-
-          <br/>
-          <br/>
-
 
           <!--Token Results -->
           <div [hidden]="!showResults" id="results">
             <ul class="text-center list-inline ">
-              <li class="list-inline-item" style="margin: 10px">
+              <li class="list-inline-item" >
                 <label style="color: cadetblue; font-weight: bold; width: 100px">API Key: </label>
               </li>
-              <li class="list-inline-item" style="margin: 10px">
+              <li class="list-inline-item" >
                 <input type="text" style="; width: 450px; font-style: italic" class="form-control" id="apiKey" [(ngModel)]="key">
               </li>
               <li class="list-inline-item">
@@ -48,10 +43,10 @@
               </li>
             </ul>
             <ul class="text-center list-inline ">
-              <li class="list-inline-item" style="margin: 10px">
+              <li class="list-inline-item" >
                 <label style="color: cadetblue; font-weight: bold; width: 100px">Token: </label>
               </li>
-              <li class="list-inline-item" style="margin: 10px">
+              <li class="list-inline-item" >
                 <input type="text" style="; width: 450px; font-style: italic" class="form-control" id="token" [(ngModel)]="token">
               </li>
               <li class="list-inline-item">
@@ -71,7 +66,7 @@
       </div>
       <router-outlet></router-outlet>
 
-      <div [hidden]="!showDetails">
+      <div [hidden]="!showDetails" style="margin-top: -15px">
         <app-tenant-details></app-tenant-details>
       </div>
 
