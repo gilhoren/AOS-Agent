@@ -11,11 +11,13 @@ export class TokenService {
   getTokenUrl: string;
   getTenantsUrl: string;
   getTenantDataUrl: string;
+  updateTenantDataUrl: string;
 
   constructor(private http: HttpClient) {
     this.getTokenUrl = 'http://localhost:8080/api/v1/gettoken';
     this.getTenantsUrl = 'http://localhost:8080/api/v1/getalltenants';
     this.getTenantDataUrl = 'http://localhost:8080/api/v1/getTenantDataByName';
+    this.updateTenantDataUrl = 'http://localhost:8080//api/v1/updatetenant';
   }
 
   public getTenantToken(tenantId) {
@@ -34,6 +36,12 @@ export class TokenService {
   public getTenantDataByName(tenantId) {
     let param = new HttpParams().set("tenantId",tenantId);
     let response = this.http.get<TenantData>(this.getTenantDataUrl, {params: param});
+    response.subscribe(val => console.log(val));
+    return response;
+  }
+
+  public updateTenant(tenantData) {
+    let response = this.http.post(this.updateTenantDataUrl, tenantData);
     response.subscribe(val => console.log(val));
     return response;
   }

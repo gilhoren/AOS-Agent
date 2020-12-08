@@ -10,6 +10,8 @@ import {TenantData} from "../tenantData";
 export class TenantDetailsComponent implements OnInit {
 
   title = 'Tenant Details';
+  updateEnabled = false;
+  enableDisableTitle = "Enable Update";
   tenantData: TenantData = new class implements TenantData {
     agentURI: string;
     agentspringboot: string;
@@ -45,5 +47,20 @@ export class TenantDetailsComponent implements OnInit {
 
   BrowseUrl(urlToBrowse: string) {
     window.open(urlToBrowse, "_blank");
+  }
+
+  UpdateTenant() {
+    this.client.updateTenant(this.tenantData).subscribe(
+      (data: boolean) => {
+
+      },
+      err => console.error(err),
+      () => console.log('tenantData updated successfully! Yeah!')
+    );
+  }
+
+  EnableDisableUpdate() {
+    this.updateEnabled = !this.updateEnabled;
+    this.enableDisableTitle =  this.updateEnabled ? "Disable Update" : "Enable Update";
   }
 }

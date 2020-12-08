@@ -2,7 +2,16 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card bg-light my-1">
-        <div class="card-header" style="font-weight: bolder">{{ title }}</div>
+        <div class="card-header" style="font-weight: bolder">{{ title }}
+          <button class="btn btn-warning btn-margin" style="margin-left: 25px  ; margin-right: 25px ; margin-bottom: 5px; alignment: right; height: 30px; font-size: smaller" (click)="EnableDisableUpdate()"
+                  data-toggle="tooltip" data-placement="right" title="Enable / Disable">
+            {{enableDisableTitle}}
+          </button>
+          <button class="btn btn-info btn-margin" style="margin-right: 25px ; margin-bottom: 5px; height: 30px; font-size: smaller" [disabled]="!updateEnabled" (click)="UpdateTenant()"
+                  data-toggle="tooltip" data-placement="right" title="Update tenant">
+            Update Tenant
+          </button>
+        </div>
         <div class="card-body">
           <ul class="list-inline ">
             <ul class="list-inline ">
@@ -10,7 +19,7 @@
                 <label style="color: cadetblue; font-weight: bold; width: 200px">TNS Name: </label>
               </li>
               <li class="list-inline-item list-margin" >
-                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.tnsname" readonly>
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.tnsname" [disabled]="!updateEnabled">
               </li>
             </ul>
             <ul class="list-inline ">
@@ -18,7 +27,7 @@
                 <label style="color: cadetblue; font-weight: bold; width: 200px">TNS Address: </label>
               </li>
               <li class="list-inline-item list-margin" >
-                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.fulltns" readonly>
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.fulltns" [disabled]="!updateEnabled">
               </li>
             </ul>
             <ul class="list-inline ">
@@ -26,7 +35,7 @@
                 <label style="color: cadetblue; font-weight: bold; width: 200px">Agent UI: </label>
               </li>
               <li class="list-inline-item list-margin">
-                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.agentURI" readonly>
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.agentURI" [disabled]="!updateEnabled">
               </li>
               <li class="list-inline-item">
                 <button class="btn btn-margin" style="margin-bottom: 5px; " (click)="BrowseUrl(tenantData.agentURI)"
@@ -40,7 +49,7 @@
                 <label style="color: cadetblue; font-weight: bold; width: 200px">Agent Springboot admin: </label>
               </li>
               <li class="list-inline-item list-margin">
-                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.agentspringboot" readonly>
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.agentspringboot" [disabled]="!updateEnabled">
               </li>
               <li class="list-inline-item">
                 <button class="btn btn-margin" style="margin-bottom: 5px; " (click)="BrowseUrl(tenantData.agentspringboot)"
@@ -54,7 +63,7 @@
                 <label style="color: cadetblue; font-weight: bold; width: 200px">Grafana URL: </label>
               </li>
               <li class="list-inline-item list-margin">
-                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.grafana" readonly>
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.grafana" [disabled]="!updateEnabled">
               </li>
               <li class="list-inline-item">
                 <button class="btn btn-margin" style="margin-bottom: 5px; " (click)="BrowseUrl(tenantData.grafana)"
@@ -68,7 +77,7 @@
                 <label style="color: cadetblue; font-weight: bold; width: 200px">AOS Login: </label>
               </li>
               <li class="list-inline-item list-margin">
-                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.aosURI" readonly>
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.aosURI" [disabled]="!updateEnabled">
               </li>
               <li class="list-inline-item">
                 <button class="btn btn-margin" style="margin-bottom: 5px;" (click)="BrowseUrl(tenantData.aosURI)"
@@ -82,7 +91,7 @@
                 <label style="color: cadetblue; font-weight: bold; width: 200px">AOS User: </label>
               </li>
               <li class="list-inline-item list-margin">
-                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.userId" readonly>
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.userId" [disabled]="!updateEnabled">
               </li>
             </ul>
             <ul class="list-inline ">
@@ -90,7 +99,7 @@
                 <label style="color: cadetblue; font-weight: bold; width: 200px">AOS Password: </label>
               </li>
               <li class="list-inline-item list-margin">
-                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.aospassword" readonly>
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.aospassword" [disabled]="!updateEnabled">
               </li>
             </ul>
             <ul class="list-inline ">
@@ -98,7 +107,7 @@
                 <label style="color: cadetblue; font-weight: bold; width: 200px">Kibana URL: </label>
               </li>
               <li class="list-inline-item list-margin">
-                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.kibana" readonly>
+                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.kibana" [disabled]="!updateEnabled">
               </li>
               <li class="list-inline-item">
                 <button class="btn btn-margin" style="margin-bottom: 5px;" (click)="BrowseUrl(tenantData.kibana)"
