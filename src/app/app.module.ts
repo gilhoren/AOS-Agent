@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import {TokenService} from "./tokengen-service.service";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { TenantDetailsComponent } from './tenant-details/tenant-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,12 @@ import { TenantDetailsComponent } from './tenant-details/tenant-details.componen
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3500,
+      extendedTimeOut: 0
+    })
   ],
   providers: [TokenService],
   bootstrap: [AppComponent]

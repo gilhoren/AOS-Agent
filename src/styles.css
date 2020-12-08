@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+.toast-container {
+  background-image: linear-gradient(greenyellow, green) !important;
+  border-radius: 32px !important;
+  box-shadow: 5px 8px 16px 0px rgba(0,0,0,0.3) !important;
+  margin-bottom: 5px !important;
+  text-align: center;
+  width: 300px;
+  font-size: large;
+  /*padding: 10px; from some reason keeps the toastr open (part of it) after timer elapses  */
+  left: 50%;
+  top: 50%;
+  position: fixed;
+  transform: translate(-50%, 0px);
+
+}
+

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenService} from "../tokengen-service.service";
 import {TenantData} from "../tenantData";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-tenant-details',
@@ -28,7 +29,7 @@ export class TenantDetailsComponent implements OnInit {
 
   constructor(
     public client: TokenService,
-
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -52,7 +53,7 @@ export class TenantDetailsComponent implements OnInit {
   UpdateTenant() {
     this.client.updateTenant(this.tenantData).subscribe(
       (data: boolean) => {
-
+        this.showToaster();
       },
       err => console.error(err),
       () => console.log('tenantData updated successfully! Yeah!')
@@ -62,5 +63,9 @@ export class TenantDetailsComponent implements OnInit {
   EnableDisableUpdate() {
     this.updateEnabled = !this.updateEnabled;
     this.enableDisableTitle =  this.updateEnabled ? "Disable Update" : "Enable Update";
+  }
+
+  showToaster(){
+    this.toastr.show("Tenant " + this.tenantData.tenantId + " updated successfully!")
   }
 }
