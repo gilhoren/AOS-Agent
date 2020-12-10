@@ -60,6 +60,10 @@ export class TenantDetailsComponent implements OnInit {
     );
   }
 
+  CreateTenant() {
+
+  }
+
   EnableDisableUpdate() {
     this.updateEnabled = !this.updateEnabled;
     this.enableDisableTitle =  this.updateEnabled ? "Disable Update" : "Enable Update";

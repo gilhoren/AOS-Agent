@@ -14,7 +14,14 @@
               </select>
             </li>
             <li class="list-inline-item">
-              <a class="text-center btn btn-light" (click)="getTenantDetails()">Show Details</a>
+              <a class="text-center btn btn-light" (click)="getTenantDetails()" data-toggle="tooltip" data-placement="right" title="Show tenant info">Show info
+                <img src="../assets/info.jpg" class="img-container"/>
+              </a>
+            </li>
+            <li class="list-inline-item" hidden>
+              <a class="text-center btn btn-warning"  (click)="createNewTenant()" data-toggle="tooltip" data-placement="right" title="Create a tenant">
+                <img src="../assets/new.png" class="img-container"/>
+              </a>
             </li>
           </ul>
           <ul class="text-center list-inline ">

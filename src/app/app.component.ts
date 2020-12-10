@@ -56,16 +56,10 @@ export class AppComponent implements OnInit{
     this.showDetails = true;
 
     this.details.getTenantDetails(this.tenantId);
+  }
 
-    // this.client.getTenantDataByName(this.tenantId).subscribe(
-    //   (data: TenantData) => {
-    //     //this.key = data.agentURI,
-    //     //this.token = data.token
-    //   },
-    //   err => console.error(err),
-    //   () => console.log('tenantData retrieved successfully!')
-    // );
-
+  createNewTenant() {
+    alert("new tenant")
   }
 
   copy2ClipboardApiKey() {
@@ -95,4 +89,5 @@ export class AppComponent implements OnInit{
   selectionChanged(e) {
     this.tenantId = e.target.value;
   }
+
 }
