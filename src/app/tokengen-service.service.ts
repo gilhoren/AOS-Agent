@@ -14,6 +14,11 @@ export class TokenService {
   updateTenantDataUrl: string;
 
   constructor(private http: HttpClient) {
+    // this.getTokenUrl = 'http://172.32.3.125:8082/api/v1/gettoken';
+    // this.getTenantsUrl = 'http://172.32.3.125:8082/api/v1/getalltenants';
+    // this.getTenantDataUrl = 'http://172.32.3.125:8082/api/v1/getTenantDataByName';
+    // this.updateTenantDataUrl = 'http://172.32.3.125:8082//api/v1/updatetenant';
+
     this.getTokenUrl = 'http://localhost:8080/api/v1/gettoken';
     this.getTenantsUrl = 'http://localhost:8080/api/v1/getalltenants';
     this.getTenantDataUrl = 'http://localhost:8080/api/v1/getTenantDataByName';

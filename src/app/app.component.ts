@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {TokenService} from "./tokengen-service.service";
 import {TokenMetaData} from "./tokenMetaData";
 import { faCoffee, faClipboard } from '@fortawesome/free-solid-svg-icons';
-import {TenantData} from "./tenantData";
 import {ViewChild} from '@angular/core';
 import {TenantDetailsComponent} from "./tenant-details/tenant-details.component";
+import {newArray} from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-root',
@@ -22,6 +22,7 @@ export class AppComponent implements OnInit{
   hideSuccessMessageToken = true;
   hideSuccessMessageAPI = true;
   tenants: Array<any>;
+  tenantsDisplay: Array<any>;
   @ViewChild(TenantDetailsComponent) details: TenantDetailsComponent;
 
   constructor(
@@ -31,6 +32,15 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     this.client.getAllTenants().subscribe(data => {
         this.tenants = data;
+        this.tenantsDisplay = newArray(0);
+
+      for(let i=0; i < this.tenants.length; i++) {
+        let tenantName = this.tenants[i].split(";")[0];
+        let tnsName = this.tenants[i].split(";")[1];
+        this.tenantsDisplay.push(tenantName + " / " + tnsName);
+        this.tenants[i] = tenantName;
+      }
+
         this.tenantId = this.tenants[0];
       },
       err => console.error(err),
@@ -87,7 +97,8 @@ export class AppComponent implements OnInit{
   }
 
   selectionChanged(e) {
-    this.tenantId = e.target.value;
+    let tenantDisplay = e.target.value;
+    this.tenantId = tenantDisplay.split(" ")[0];
   }
 
 }

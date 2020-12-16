@@ -4,17 +4,17 @@
       <div class="card bg-dark my-4">
         <div class="card-body">
           <h3 class="card-title text-center text-white py-3">{{ title }}</h3>
-          <ul class="text-center list-inline ">
-            <li class="list-inline-item" >
-                <label style="color: whitesmoke">Tenant: </label>
+          <ul class="text-center list-inline " >
+            <li class="list-inline-item">
+                <label style="; color: darkorange; font-size: large">Environment: </label>
             </li>
             <li class="list-inline-item">
-              <select class="form-control custom-select" style="font-style: italic; width: 250px; " (change)="selectionChanged($event)">
-                <option *ngFor="let tenantId of tenants">{{tenantId}}</option>
+              <select class="form-control custom-select" style="margin-top: -5px; font-style: italic; width: 250px; " (change)="selectionChanged($event)">
+                <option *ngFor="let tenantId of tenantsDisplay">{{tenantId}}</option>
               </select>
             </li>
             <li class="list-inline-item">
-              <a class="text-center btn btn-light" (click)="getTenantDetails()" data-toggle="tooltip" data-placement="right" title="Show tenant info">Show info
+              <a class="text-center btn btn-light" style="margin-top: -5px" (click)="getTenantDetails()" data-toggle="tooltip" data-placement="right" title="Show tenant info">Show info
                 <img src="../assets/info.jpg" class="img-container"/>
               </a>
             </li>

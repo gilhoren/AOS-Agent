@@ -6,3 +6,23 @@
 .list-margin {
   margin: 5px;
 }
+
+.qa {
+  background-color: green;
+}
+
+.dev {
+  background-color: lightblue;
+}
+
+.prod {
+  background-color: red;
+}
+
+.stg {
+  background-color: orange;
+}
+
+.other {
+  background-color: pink;
+}

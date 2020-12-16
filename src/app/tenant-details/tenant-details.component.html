@@ -1,13 +1,27 @@
-<div class="container">
+<div class="container" >
   <div class="row">
     <div class="col-md-12">
       <div class="card bg-light my-1">
-        <div class="card-header" style="font-weight: bolder">{{ title }}
-          <button class="btn btn-warning btn-margin" style="margin-left: 25px  ; margin-right: 25px ; margin-bottom: 5px; alignment: right; height: 30px; font-size: smaller" (click)="EnableDisableUpdate()"
+        <div class="card-header" style="font-weight: bolder">
+<!--             [ngClass]="-->
+<!--          {-->
+<!--            'qa': tenantData.tenantPurpose === 'QA',-->
+<!--            'dev' : tenantData.tenantPurpose === 'DEV',-->
+<!--            'prod': tenantData.tenantPurpose === 'PROD',-->
+<!--            'stg': tenantData.tenantPurpose === 'STG',-->
+<!--            'other': tenantData.tenantPurpose === 'OTHER'-->
+<!--          }" -->
+
+          <label data-toggle="tooltip" data-placement="right" title={{tenantData.tenantPurpose}}
+                 style="font-size: large; align-content: center; horiz-align: center;
+                 vertical-align: center; padding: 10px; margin-bottom: 8px; margin-right: 5px; border: 2px ; border-radius: 15% ">
+            {{ title }}
+          </label>
+          <button class="btn btn-info btn-margin" style="margin-left: 25px  ;  margin-right: 25px ; margin-top: -2px;  alignment: right; height: 30px; font-size: smaller" (click)="EnableDisableUpdate()"
                   data-toggle="tooltip" data-placement="right" title="Enable / Disable">
             {{enableDisableTitle}}
           </button>
-          <button class="btn btn-info btn-margin" style="margin-right: 25px ; margin-bottom: 5px; height: 30px; font-size: smaller" [disabled]="!updateEnabled" (click)="UpdateTenant()"
+          <button class="btn btn-info btn-margin" style="margin-right: 25px ;  height: 30px; margin-top: -2px;  font-size: smaller" [disabled]="!updateEnabled" (click)="UpdateTenant()"
                   data-toggle="tooltip" data-placement="right" title="Update tenant">
             Update Tenant
           </button>
@@ -21,6 +35,12 @@
               <li class="list-inline-item list-margin" >
                 <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.tnsname" [disabled]="!updateEnabled">
               </li>
+              <li class="list-inline-item list-margin">
+                <button class="btn" style="margin-bottom: 5px; height: 36px; width: 38px; background: cadetblue" (click)="copy2Clipboard(tenantData.tnsname)"
+                        data-toggle="tooltip" data-placement="right" title="Copy to clipboard">
+                  <fa-icon [icon]="faClipboard"></fa-icon>
+                </button>
+              </li>
             </ul>
             <ul class="list-inline ">
               <li class="list-inline-item list-margin">
@@ -28,6 +48,12 @@
               </li>
               <li class="list-inline-item list-margin" >
                 <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.fulltns" [disabled]="!updateEnabled">
+              </li>
+              <li class="list-inline-item list-margin">
+                <button class="btn" style="margin-bottom: 5px; height: 36px; width: 38px; background: cadetblue" (click)="copy2Clipboard(tenantData.fulltns)"
+                        data-toggle="tooltip" data-placement="right" title="Copy to clipboard">
+                  <fa-icon [icon]="faClipboard"></fa-icon>
+                </button>
               </li>
             </ul>
             <ul class="list-inline ">
@@ -93,13 +119,25 @@
               <li class="list-inline-item list-margin">
                 <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.userId" [disabled]="!updateEnabled">
               </li>
+              <li class="list-inline-item list-margin">
+                <button class="btn" style="margin-bottom: 5px; height: 36px; width: 38px; background: cadetblue" (click)="copy2Clipboard(tenantData.userId)"
+                        data-toggle="tooltip" data-placement="right" title="Copy to clipboard">
+                  <fa-icon [icon]="faClipboard"></fa-icon>
+                </button>
+              </li>
             </ul>
             <ul class="list-inline ">
               <li class="list-inline-item list-margin">
                 <label style="color: cadetblue; font-weight: bold; width: 200px">AOS Password: </label>
               </li>
               <li class="list-inline-item list-margin">
-                <input type="text" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.aospassword" [disabled]="!updateEnabled">
+                <input type="password" style="; width: 600px; font-style: italic" class="form-control" [(ngModel)]="tenantData.aospassword" [disabled]="!updateEnabled">
+              </li>
+              <li class="list-inline-item list-margin">
+                <button class="btn" style="margin-bottom: 5px; height: 36px; width: 38px; background: cadetblue" (click)="copy2Clipboard(tenantData.aospassword)"
+                        data-toggle="tooltip" data-placement="right" title="Copy to clipboard">
+                  <fa-icon [icon]="faClipboard"></fa-icon>
+                </button>
               </li>
             </ul>
             <ul class="list-inline ">

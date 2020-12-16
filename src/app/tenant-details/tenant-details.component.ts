@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {TokenService} from "../tokengen-service.service";
 import {TenantData} from "../tenantData";
 import { ToastrService } from 'ngx-toastr';
+import { faCoffee, faClipboard } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-tenant-details',
@@ -13,6 +14,7 @@ export class TenantDetailsComponent implements OnInit {
   title = 'Tenant Details';
   updateEnabled = false;
   enableDisableTitle = "Enable Update";
+  faClipboard = faClipboard;
   tenantData: TenantData = new class implements TenantData {
     agentURI: string;
     agentspringboot: string;
@@ -25,6 +27,7 @@ export class TenantDetailsComponent implements OnInit {
     tenantId: string;
     tnsname: string;
     userId: string;
+    tenantPurpose: string;
   }
 
   constructor(
@@ -71,5 +74,14 @@ export class TenantDetailsComponent implements OnInit {
 
   showToaster(){
     this.toastr.show("Tenant " + this.tenantData.tenantId + " updated successfully!")
+  }
+
+  copy2Clipboard(data) {
+    document.addEventListener('copy', (e: ClipboardEvent) => {
+      e.clipboardData.setData('text/plain', data);
+      e.preventDefault();
+      document.removeEventListener('copy', null);
+    });
+    document.execCommand('copy');
   }
 }

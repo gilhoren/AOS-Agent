@@ -10,4 +10,5 @@ export interface TenantData {
   aosURI: string;
   aospassword: string;
   fulltns: string;
+  tenantPurpose: string;
 }
