@@ -14,7 +14,7 @@ import {newArray} from "@angular/compiler/src/util";
 export class AppComponent implements OnInit{
   showResults = false;
   showDetails = false;
-  title = 'AOS Token Generator';
+  title = 'AOS Environment Guide';
   key = "";
   token = "";
   tenantId = "";
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit{
       for(let i=0; i < this.tenants.length; i++) {
         let tenantName = this.tenants[i].split(";")[0];
         let tnsName = this.tenants[i].split(";")[1];
-        this.tenantsDisplay.push(tenantName + " / " + tnsName);
+        this.tenantsDisplay.push(tnsName + " | " + tenantName);
         this.tenants[i] = tenantName;
       }
 
@@ -98,7 +98,9 @@ export class AppComponent implements OnInit{
 
   selectionChanged(e) {
     let tenantDisplay = e.target.value;
-    this.tenantId = tenantDisplay.split(" ")[0];
+    this.tenantId = tenantDisplay.split(" ")[2];
+    this.showDetails = false;
+    this.showResults = false;
   }
 
 }

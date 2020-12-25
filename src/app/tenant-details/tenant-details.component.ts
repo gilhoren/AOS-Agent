@@ -15,6 +15,8 @@ export class TenantDetailsComponent implements OnInit {
   updateEnabled = false;
   enableDisableTitle = "Enable Update";
   faClipboard = faClipboard;
+  selectedModule = "Master Data Management";
+  swaggerKeyValue: Map<string, string> = new Map<string, string>();
   tenantData: TenantData = new class implements TenantData {
     agentURI: string;
     agentspringboot: string;
@@ -37,6 +39,39 @@ export class TenantDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.tenantData.tnsname = "";
+    this.swaggerKeyValue.set("Master Data Management","mdm_2");
+    this.swaggerKeyValue.set("Master Reference Data","mdm");
+    this.swaggerKeyValue.set("Unified Product Catalog","upc");
+    this.swaggerKeyValue.set("Inventory","uis");
+    this.swaggerKeyValue.set("Rate Card","ratecard");
+    this.swaggerKeyValue.set("Data Ingestor","dataingestor");
+    this.swaggerKeyValue.set("Target Service","target");
+    this.swaggerKeyValue.set("Export Service","export");
+    this.swaggerKeyValue.set("May I Service","mayiservice");
+    this.swaggerKeyValue.set("Unified Planner","unifiedplanner");
+    this.swaggerKeyValue.set("ORGANIZATION","organization");
+    this.swaggerKeyValue.set("Notes","notes");
+    this.swaggerKeyValue.set("Unified Trafficking Service","uts");
+    this.swaggerKeyValue.set("Reports","reports");
+    this.swaggerKeyValue.set("DASHBOARDIM","dashboardim");
+    this.swaggerKeyValue.set("Attachments","attachments");
+    this.swaggerKeyValue.set("User Management","um");
+    this.swaggerKeyValue.set("Ingress Service","ingress");
+    this.swaggerKeyValue.set("Integration Manager Controller","imcontroller");
+    this.swaggerKeyValue.set("Unison","unison");
+    this.swaggerKeyValue.set("Notification Service","notifications");
+    this.swaggerKeyValue.set("Connect Organization","connectorganization");
+    this.swaggerKeyValue.set("Avails","avails");
+    this.swaggerKeyValue.set("Template Service","templateservice");
+    this.swaggerKeyValue.set("Workflow Server","workflowserver");
+    this.swaggerKeyValue.set("Custom Fields","customfields");
+    this.swaggerKeyValue.set("User Settings","usersettings");
+    this.swaggerKeyValue.set("Products","products");
+    this.swaggerKeyValue.set("Book Creation","bookcreation");
+    this.swaggerKeyValue.set("Ratings","ratings");
+    this.swaggerKeyValue.set("Connect Mapper","connectmapper");
+    this.swaggerKeyValue.set("CRM Service","crm");
+    this.swaggerKeyValue.set("SCHEDULELOG","schedulelog");
   }
 
   getTenantDetails(tenantId) {
@@ -53,6 +88,11 @@ export class TenantDetailsComponent implements OnInit {
     window.open(urlToBrowse, "_blank");
   }
 
+  OpenSwagger() {
+    let url = this.tenantData.baseURI + this.swaggerKeyValue.get(this.selectedModule) + "/swagger-ui.html";
+    this.BrowseUrl(url);
+  }
+
   UpdateTenant() {
     this.client.updateTenant(this.tenantData).subscribe(
       (data: boolean) => {
@@ -61,10 +101,6 @@ export class TenantDetailsComponent implements OnInit {
       err => console.error(err),
       () => console.log('tenantData updated successfully! Yeah!')
     );
-  }
-
-  CreateTenant() {
-
   }
 
   EnableDisableUpdate() {
@@ -84,4 +120,7 @@ export class TenantDetailsComponent implements OnInit {
     });
     document.execCommand('copy');
   }
+
+
+
 }

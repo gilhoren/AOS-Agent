@@ -9,7 +9,7 @@
                 <label style="; color: darkorange; font-size: large">Environment: </label>
             </li>
             <li class="list-inline-item">
-              <select class="form-control custom-select" style="margin-top: -5px; font-style: italic; width: 250px; " (change)="selectionChanged($event)">
+              <select class="form-control custom-select" style="margin-top: -5px;  font-size: large; font-family: 'Calibri'; width: 250px; " (change)="selectionChanged($event)">
                 <option *ngFor="let tenantId of tenantsDisplay">{{tenantId}}</option>
               </select>
             </li>

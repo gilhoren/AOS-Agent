@@ -114,6 +114,24 @@
             </ul>
             <ul class="list-inline ">
               <li class="list-inline-item list-margin">
+                <label style="color: cadetblue; font-weight: bold; width: 200px">AOS Swagger: </label>
+              </li>
+              <li class="list-inline-item list-margin">
+                <select [(ngModel)]="selectedModule"
+                  class="form-control custom-select"
+                  style="margin-top: -5px;  font-size: large; font-family: 'Calibri'; width: 600px; font-style: italic" class="form-control">
+                  <option *ngFor="let swaggerDisplayName of swaggerKeyValue.keys()">{{swaggerDisplayName}}</option>
+                </select>
+              </li>
+              <li class="list-inline-item">
+                <button class="btn btn-margin" style="margin-bottom: 5px;" (click)="OpenSwagger()"
+                        data-toggle="tooltip" data-placement="right" title="Browse AOS Swagger">
+                  <img src="../../assets/swagger.jpg" class="img-container"/>
+                </button>
+              </li>
+            </ul>
+            <ul class="list-inline ">
+              <li class="list-inline-item list-margin">
                 <label style="color: cadetblue; font-weight: bold; width: 200px">AOS User: </label>
               </li>
               <li class="list-inline-item list-margin">
